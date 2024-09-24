@@ -89,27 +89,34 @@ main_app_css = """
         opacity:0.6px;
     }
     
+    #root > div:nth-child(1) > div.withScreencast > div > div > div > section.stAppViewMain.main.st-emotion-cache-bm2z3a.ea3mdgi8 > div.stAppViewBlockContainer.block-container.st-emotion-cache-13ln4jf.ea3mdgi5 > div > div > div > div:nth-child(7) > div > button > div > p{
+        font-size:30px;}
 
-
-    #root > div:nth-child(1) > div.withScreencast > div > div > div > section.stAppViewMain.main.st-emotion-cache-bm2z3a.ea3mdgi8 > div.stAppViewBlockContainer.block-container.st-emotion-cache-13ln4jf.ea3mdgi5 > div > div > div > div:nth-child(3) > div > div{
-        background-color:#9ef385;
-        border-color:rgb(0,0,0);
-        }
+    # #root > div:nth-child(1) > div.withScreencast > div > div > div > section.stAppViewMain.main.st-emotion-cache-bm2z3a.ea3mdgi8 > div.stAppViewBlockContainer.block-container.st-emotion-cache-13ln4jf.ea3mdgi5 > div > div > div > div:nth-child(3) > div > div{
+    #     background-color:#272625;
+    #     border-color:rgb(0,0,0);
+    #     }
 
     #root > div:nth-child(1) > div.withScreencast > div > div > div > section.stAppViewMain.main.st-emotion-cache-bm2z3a.ea3mdgi8 > div.stAppViewBlockContainer.block-container.st-emotion-cache-13ln4jf.ea3mdgi5 > div > div > div > div:nth-child(3) > div > div > div > div > div > div > p{
             color:rgb(0,0,0);
+            background-color:#272625;
             font-weight: bold;
             font-size:20px;
             }
 
     #bangalore-house-price-predictor{
+        background-color:black;
+        align-content:center;
+        padding:1rem;
+        border-radius:10px;
         color: rgb(255,255,255);
         font-weight: bold;
         -webkit-text-stroke: 1px black;
         }
 
     #root > div:nth-child(1) > div.withScreencast > div > div > div > section.stAppViewMain.main.st-emotion-cache-bm2z3a.ea3mdgi8 > div.stAppViewBlockContainer.block-container.st-emotion-cache-13ln4jf.ea3mdgi5 > div > div > div > div.stForm.st-emotion-cache-qcpnpn.e10yg2by1 > div > div > div > div:nth-child(1) > div > label > div > p{
-        background-color:#262626;
+        background-color:#272625;
+        padding:5px;
         border-radius:8px;
         font-weight: bold;
         font-size:20px;
@@ -117,25 +124,34 @@ main_app_css = """
         }
 
     #root > div:nth-child(1) > div.withScreencast > div > div > div > section.stAppViewMain.main.st-emotion-cache-bm2z3a.ea3mdgi8 > div.stAppViewBlockContainer.block-container.st-emotion-cache-13ln4jf.ea3mdgi5 > div > div > div > div.stForm.st-emotion-cache-qcpnpn.e10yg2by1 > div > div > div > div:nth-child(2) > div > label > div > p{
-         background-color:#262626 ;
+        background-color:#272625;
+        padding:5px;
         border-radius:8px;
         font-weight: bold;
         font-size:20px;
         color: rgb(255,255,255)}
 
     #root > div:nth-child(1) > div.withScreencast > div > div > div > section.stAppViewMain.main.st-emotion-cache-bm2z3a.ea3mdgi8 > div.stAppViewBlockContainer.block-container.st-emotion-cache-13ln4jf.ea3mdgi5 > div > div > div > div.stForm.st-emotion-cache-qcpnpn.e10yg2by1 > div > div > div > div:nth-child(3) > div > label > div > p{
-        background-color:#262626 ;
+        background-color:#272625 ;
+        padding:5px;
         border-radius:8px;
         font-weight: bold;
         font-size:20px;
         color: rgb(255,255,255);}
 
     #root > div:nth-child(1) > div.withScreencast > div > div > div > section.stAppViewMain.main.st-emotion-cache-bm2z3a.ea3mdgi8 > div.stAppViewBlockContainer.block-container.st-emotion-cache-13ln4jf.ea3mdgi5 > div > div > div > div.stForm.st-emotion-cache-qcpnpn.e10yg2by1 > div > div > div > div:nth-child(4) > div > label > div > p{
-        background-color:#262626;
+        background-color:#272625;
+        padding:5px;
         border-radius:8px;
         font-weight: bold;
         font-size:20px;
         color: rgb(255,255,255);}
+
+    #all-prediction-are-subjected-to-datasets-used-at-the-time-of-training-the-model-the-amount-which-is-predicting-on-the-screen-can-be-different-from-the-real-world-predited-price-will-shown-above-this-message-scroll-up-after-clicking-on-button-price-predict{
+        padding:10px;
+        border-radius:5px;
+        background-color:black;
+        }
 </style>
 
 <script type="text/javascript">
@@ -291,9 +307,14 @@ def display_main_content():
             x[loc_index] = 1
             return model.predict([x])[0]
 
+    notice_message="""<div1><h5>All prediction are subjected to datasets used at the time of training the model. The amount which is predicting on the screen can be different from the real world.
+    (Predited Price will shown above this message, Scroll up after clicking on Button "Price Predict")</h5></div1>"""
 
+    st.markdown(notice_message,unsafe_allow_html=True)
         # Create a Streamlit app interface
     st.title("Bangalore House Price Predictor!")
+
+
     
     with st.form(key="Bangalore House Price Prediction"):
         # User input fields for the model
@@ -307,16 +328,16 @@ def display_main_content():
 
             submit_button = st.form_submit_button("Predict Price")
 
+    # show_popup("All prediction are subjected to datasets used at the time of training the model. The amount which is predicting on the screen can be different from the real world.", "warning")
 
     if submit_button:
         if model:  # Ensure the model is loaded
             prediction = predict_price(area, bhk, bath, location)
-            show_popup(f'The predicted price of the house is: ₹ {prediction:.2f} Lakhs', "success")
+            st.button(f'The predicted price of the house is: ₹ {prediction:.2f} Lakhs', "success")
         else:
             show_popup("Prediction model is not available.", "error")
 
 
-    show_popup("All prediction are subjected to datasets used at the time of training the model. The amount which is predicting on the screen can be different from the real world.", "info")
 
 
     file_path = 'banglore_home_prices_model.pkl'

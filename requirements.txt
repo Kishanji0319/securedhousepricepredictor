@@ -2,6 +2,3 @@ pandas
 scikit-learn
 streamlit
 numpy
-datetime
-pickle
-scipy

@@ -363,3 +363,14 @@ if not st.session_state.logged_in:
 else:
     display_main_content()
 
+
+pip install gitpython
+
+import git
+
+# Path to your repository and file
+repo = git.Repo('/path/to/repo')
+repo.git.add('users.csv')
+repo.index.commit('Update users.csv with new signup data')
+repo.git.push('origin', 'main')
+

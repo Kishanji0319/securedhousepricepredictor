@@ -364,8 +364,6 @@ else:
     display_main_content()
 
 
-pip install gitpython
-
 import git
 
 # Path to your repository and file

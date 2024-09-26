@@ -147,8 +147,9 @@ main_app_css = """
         font-size:20px;
         color: rgb(255,255,255);}
 
-    #all-prediction-are-subjected-to-datasets-used-at-the-time-of-training-the-model-the-amount-which-is-predicting-on-the-screen-can-be-different-from-the-real-world-predited-price-will-shown-above-this-message-scroll-up-after-clicking-on-button-price-predict{
-        padding:10px;
+    #root > div:nth-child(1) > div.withScreencast > div > div > div > section.stAppViewMain.main.st-emotion-cache-bm2z3a.ea3mdgi8 > div.stAppViewBlockContainer.block-container.st-emotion-cache-13ln4jf.ea3mdgi5 > div > div > div > div:nth-child(4){
+        padding:8px;
+        margin
         border-radius:5px;
         background-color:black;
         }
@@ -307,8 +308,8 @@ def display_main_content():
             x[loc_index] = 1
             return model.predict([x])[0]
 
-    notice_message="""<div1><h5>All prediction are subjected to datasets used at the time of training the model. The amount which is predicting on the screen can be different from the real world.
-    (Predited Price will shown above this message, Scroll up after clicking on Button "Price Predict")</h5></div1>"""
+    notice_message="""<div1><h2>Note:-</h2><h5>All prediction are subjected to datasets used at the time of training the model. The amount which is predicting on the screen can be different from the real world.
+    (Predited Price will shown above this message, Scroll up after clicking on Button "Price Predict").</h5></div1>"""
 
     st.markdown(notice_message,unsafe_allow_html=True)
         # Create a Streamlit app interface

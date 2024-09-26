@@ -363,12 +363,3 @@ if not st.session_state.logged_in:
 else:
     display_main_content()
 
-
-import git
-
-# Path to your repository and file
-repo = git.Repo('https://github.com/Kishanji0319/securedhousepricepredictor')
-repo.git.add('signup_history.csv')
-repo.index.commit('Update signup_history.csv with new signup data')
-repo.git.push('origin', 'main')
-

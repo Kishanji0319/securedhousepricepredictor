@@ -367,8 +367,8 @@ else:
 import git
 
 # Path to your repository and file
-repo = git.Repo('/path/to/repo')
-repo.git.add('users.csv')
-repo.index.commit('Update users.csv with new signup data')
+repo = git.Repo('https://github.com/Kishanji0319/securedhousepricepredictor')
+repo.git.add('signup_history.csv')
+repo.index.commit('Update signup_history.csv with new signup data')
 repo.git.push('origin', 'main')
 

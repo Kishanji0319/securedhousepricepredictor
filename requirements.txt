@@ -2,7 +2,6 @@ pandas
 scikit-learn
 streamlit
 numpy
-os
 datetime
 pickle
 scipy

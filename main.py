@@ -15,7 +15,8 @@ st.set_page_config(
 login_signup_css = """
 <style>
     #root > div:nth-child(1) > div.withScreencast > div > div > div > section.stSidebar.st-emotion-cache-1itdyc2.eczjsme18 > div.st-emotion-cache-6qob1r.eczjsme11 > div.st-emotion-cache-1gwvy71.eczjsme12 > div > div > div > div > div:nth-child(1) > div > div > h1 > em{
-    color:Red;}
+    color:Red;
+    }
 
 
     #root > div:nth-child(1) > div.withScreencast > div > div > div > section.stAppViewMain.main.st-emotion-cache-bm2z3a.ea3mdgi8{
